@@ -27,7 +27,7 @@ var selectionSort = function(array) {
   return array
 }
 
-
+// TIME COMPLEXITY --> O(n^2)
 
 // selectionSort([1,4,6,8,2,5])
 // selectionSort([0,0,0,4,5,7,1])
