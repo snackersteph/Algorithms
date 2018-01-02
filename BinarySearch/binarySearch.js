@@ -1,3 +1,7 @@
+// *****************************************************
+// ******************** BINARY SEARCH ******************
+// *****************************************************
+
 // INPUT: sorted array and target value
 // OUTPUT: index of target value in the input array
 
@@ -26,6 +30,8 @@ var binarySearch = (array, item) => {
 }
 
 // TIME COMPLEXITY --> O(n^2)
+
+// >>>>>>>>>>>>>>>>>> TEST CASES >>>>>>>>>>>>>>>>>> //
 
 // console.log(binarySearch([1,2,3,4,5],0))
 // console.log(binarySearch([1,2,3,4,5],1))
