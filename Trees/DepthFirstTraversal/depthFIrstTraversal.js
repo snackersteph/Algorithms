@@ -2,7 +2,7 @@
 // *************** DEPTH FIRST TRAVERSAL ***************
 // *****************************************************
 
-// There are three variants for how you can process the three
+// There are three variants for how you can process the tree
 // - In preorder traversal, you process the node, then recursively 
 //   call the method on the left subtree and then the right subtree.
 
@@ -11,7 +11,7 @@
 //   method on the right tree.
 
 // - Postorder traversal, as you have guessed, you recursively 
-//   call the method on the left subtree, then the left subtree, 
+//   call the method on the left subtree, then the right subtree, 
 //   then you process the node.
 
 // For a sorted list out of a BST, you'd want to use inorder. 
@@ -23,11 +23,11 @@
 // would you delete the node you're working on.
 
 const preorderTraverse = (node, array) => {
-  if (!node) return array;
-  array.push(node.value);
-  array = preorderTraverse(node.left, array);
-  array = preorderTraverse(node.right, array);
-  return array;
+  if (!node) return array
+  array.push(node.value)
+  array = preorderTraverse(node.left, array)
+  array = preorderTraverse(node.right, array)
+  return array
 };
 
 const inorderTraverse = (node, array) => {
@@ -46,63 +46,50 @@ const postorderTraverse = (node, array) => {
   return array;
 };
 
-// Jasmine unit tests
+const tree = {
+  value: 8,
+  left: {
+    value: 4,
+    left: {
+      value: 3,
+      left: {
+        value: 2,
+        left: null,
+        right: null
+      },
+      right: null
+    },
+    right: {
+      value: 5,
+      left: null,
+      right: {
+        value: 7,
+        left: {
+          value: 6,
+          left: null,
+          right: null
+        }
+      }
+    }
+  },
+  right: {
+    value: 12,
+    left: {
+      value: 10,
+      left: {
+        value: 9,
+        left: null,
+        right: null
+      },
+      right: {
+        value: 11,
+        left: null,
+        right: null
+      }
+    }
+  }
+};
 
-// describe('tests', function() {
-  
-//   const tree = {
-//     value: 8,
-//     left: {
-//       value: 4,
-//       left: {
-//         value: 3,
-//         left: {
-//           value: 2,
-//           left: null,
-//           right: null
-//         },
-//         right: null
-//       },
-//       right: {
-//         value: 5,
-//         left: null,
-//         right: {
-//           value: 7,
-//           left: {
-//             value: 6,
-//             left: null,
-//             right: null
-//           }
-//         }
-//       }
-//     },
-//     right: {
-//       value: 12,
-//       left: {
-//         value: 10,
-//         left: {
-//           value: 9,
-//           left: null,
-//           right: null
-//         },
-//         right: {
-//           value: 11,
-//           left: null,
-//           right: null
-//         }
-//       }
-//     }
-//   };
-  
-//   it('preorderTraverse', () => {
-//     expect(preorderTraverse(tree, [])).toEqual([8, 4, 3, 2, 5, 7, 6, 12, 10, 9, 11]);
-//   });
-  
-//   it('inorderTraverse', () => {
-//     expect(inorderTraverse(tree, [])).toEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-//   });
-  
-//   it('postorderTraverse', () => {
-//     expect(postorderTraverse(tree, [])).toEqual([2, 3, 6, 7, 5, 4, 9, 11, 10, 12, 8]);
-//   });
-// });
+console.log(preorderTraverse(tree, [])) // [8, 4, 3, 2, 5, 7, 6, 12, 10, 9, 11]
+console.log(inorderTraverse(tree, [])) // [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+console.log(postorderTraverse(tree, [])) // [2, 3, 6, 7, 5, 4, 9, 11, 10, 12, 8]

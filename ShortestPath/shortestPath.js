@@ -42,6 +42,7 @@ const findShortestPathLength = (maze, [xA, yA], [xB, yB]) => {
   while (aQueue.length && bQueue.length) {
     iteration++;
     const aNeighbors = aQueue.reduce((acc, neighbor) => acc.concat(getNeighbors(visited, neighbor.x, neighbor.y)), [])
+    // you need to reset this with each iteration
     aQueue = [];
     for (let i = 0; i < aNeighbors.length; i++) {
       const neighbor = aNeighbors[i];
